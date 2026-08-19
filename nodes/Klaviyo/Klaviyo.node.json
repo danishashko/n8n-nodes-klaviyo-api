@@ -1,0 +1,18 @@
+{
+	"node": "n8n-nodes-klaviyo-api.klaviyo",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Marketing", "Sales"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/danishashko/n8n-nodes-klaviyo-api?tab=readme-ov-file#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/danishashko/n8n-nodes-klaviyo-api?tab=readme-ov-file"
+			}
+		]
+	}
+}

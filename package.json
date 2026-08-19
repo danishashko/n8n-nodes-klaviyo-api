@@ -1,0 +1,66 @@
+{
+	"name": "n8n-nodes-klaviyo-api",
+	"version": "0.1.0",
+	"description": "n8n node for Klaviyo: profiles, lists, segments, events, metrics and campaigns, plus a trigger for Klaviyo webhooks",
+	"license": "MIT",
+	"homepage": "https://github.com/danishashko/n8n-nodes-klaviyo-api#readme",
+	"keywords": [
+		"n8n-community-node-package",
+		"n8n",
+		"klaviyo",
+		"email-marketing",
+		"sms-marketing",
+		"ecommerce",
+		"crm"
+	],
+	"author": {
+		"name": "Daniel Shashko",
+		"email": "daniel.shashko@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/danishashko/n8n-nodes-klaviyo-api.git"
+	},
+	"bugs": {
+		"url": "https://github.com/danishashko/n8n-nodes-klaviyo-api/issues"
+	},
+	"engines": {
+		"node": ">=20.15"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease",
+		"scan": "node scripts/scan.mjs",
+		"test": "node scripts/verify-bodies.mjs",
+		"check": "npm run lint && npm run build && npm test && npm run scan"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/KlaviyoApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Klaviyo/Klaviyo.node.js",
+			"dist/nodes/KlaviyoTrigger/KlaviyoTrigger.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "^0.23.0",
+		"eslint": "9.39.4",
+		"prettier": "3.8.3",
+		"release-it": "20.2.0",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
