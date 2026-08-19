@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-import { returnAllFields, rootDataProperty } from '../shared/descriptions';
+import { PAGE_SIZE, returnAllFields, rootDataProperty } from '../shared/descriptions';
 import { deletedConfirmation } from '../shared/relationships';
 
 export const campaignOperations: INodeProperties[] = [
@@ -124,5 +124,5 @@ export const campaignFields: INodeProperties[] = [
 			},
 		},
 	},
-	...returnAllFields('campaign', 'getAll'),
+	...returnAllFields('campaign', 'getAll', PAGE_SIZE.campaigns),
 ];

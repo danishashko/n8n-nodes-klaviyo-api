@@ -1,6 +1,11 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-import { resourceLocator, returnAllFields, rootDataProperty } from '../shared/descriptions';
+import {
+	PAGE_SIZE,
+	resourceLocator,
+	returnAllFields,
+	rootDataProperty,
+} from '../shared/descriptions';
 import { acceptedJobResponse, presendSubscribe, presendUnsubscribe } from '../shared/subscription';
 
 const only = (operation: string) => ({ resource: ['profile'], operation: [operation] });
@@ -233,7 +238,7 @@ export const profileFields: INodeProperties[] = [
 		},
 	},
 
-	...returnAllFields('profile', 'getAll'),
+	...returnAllFields('profile', 'getAll', PAGE_SIZE.profiles),
 	{
 		displayName: 'Filters',
 		name: 'filters',

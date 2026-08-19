@@ -1,6 +1,6 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-import { returnAllFields, rootDataProperty } from '../shared/descriptions';
+import { PAGE_SIZE, returnAllFields, rootDataProperty } from '../shared/descriptions';
 import { acceptedJobResponse } from '../shared/subscription';
 import { presendEvent } from '../shared/event';
 
@@ -155,7 +155,7 @@ export const eventFields: INodeProperties[] = [
 			},
 		],
 	},
-	...returnAllFields('event', 'getAll'),
+	...returnAllFields('event', 'getAll', PAGE_SIZE.events),
 	{
 		displayName: 'Filters',
 		name: 'filters',

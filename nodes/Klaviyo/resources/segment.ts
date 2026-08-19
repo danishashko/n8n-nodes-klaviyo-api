@@ -1,6 +1,11 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-import { resourceLocator, returnAllFields, rootDataProperty } from '../shared/descriptions';
+import {
+	PAGE_SIZE,
+	resourceLocator,
+	returnAllFields,
+	rootDataProperty,
+} from '../shared/descriptions';
 
 export const segmentOperations: INodeProperties[] = [
 	{
@@ -86,6 +91,6 @@ export const segmentFields: INodeProperties[] = [
 		displayOptions: { show: { resource: ['segment'], operation: ['update'] } },
 		routing: { send: { type: 'body', property: 'data.attributes.name' } },
 	},
-	...returnAllFields('segment', 'getAll'),
-	...returnAllFields('segment', 'getProfiles'),
+	...returnAllFields('segment', 'getAll', PAGE_SIZE.segments),
+	...returnAllFields('segment', 'getProfiles', PAGE_SIZE.nestedProfiles),
 ];

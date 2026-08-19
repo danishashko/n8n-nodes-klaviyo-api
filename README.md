@@ -150,17 +150,26 @@ failing silently later.
   `2026-07-15`. Klaviyo supports each revision for two years, so a pinned revision
   keeps existing workflows working when Klaviyo ships breaking changes. Newer
   fields become available when the node is updated.
-- **Consent is a queued job.** Subscribe and Unsubscribe return `202 Accepted`
-  immediately; Klaviyo applies them a moment later. The node emits a confirmation
-  item so the branch keeps running, but reading the profile back in the same
-  execution may still show the old state.
+- **Consent and events are queued jobs.** Subscribe, Unsubscribe and Create Event
+  return `202 Accepted` immediately and Klaviyo applies them afterwards. The node
+  emits a confirmation item so the branch keeps running, but reading the profile
+  back in the same execution may still show the old state. A `202` means accepted,
+  not applied - if a queued change never shows up, check the account itself rather
+  than the workflow, since the API answers `202` either way.
 - **Campaign creation is not included.** Building a campaign needs audiences, a
   send strategy and message content, which is a large form for something almost
   everyone does in Klaviyo's editor. Campaigns can be listed, read, sent and
   deleted here.
+- **Limit is capped per resource.** Klaviyo allows a different maximum page size on
+  every collection and rejects anything larger outright rather than clamping: 100
+  for profiles and campaigns, but only **10** for lists and segments, and
+  `/api/metrics` takes no page size at all. The Limit field carries the real
+  maximum for the resource you picked. To go past it, switch on **Return All**,
+  which pages through with a cursor.
 - **Rate limits.** Klaviyo applies per-endpoint burst and steady limits and answers
-  `429` when you cross them. Use the node's built-in **Retry On Fail** setting for
-  bulk work.
+  `429` when you cross them. A Get Many node runs once per incoming item, so a
+  chain of them multiplies requests quickly - set **Execute Once** on read nodes
+  that only need to run a single time. Use **Retry On Fail** for bulk work.
 - **Profile IDs, not emails.** List Add/Remove Profiles takes Klaviyo profile IDs.
   Look the profile up first (Profile → Get Many, filtered by email) if you only
   have an address.

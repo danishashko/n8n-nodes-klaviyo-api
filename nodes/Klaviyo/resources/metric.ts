@@ -1,6 +1,11 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-import { resourceLocator, returnAllFields, rootDataProperty } from '../shared/descriptions';
+import {
+	PAGE_SIZE,
+	resourceLocator,
+	returnAllFields,
+	rootDataProperty,
+} from '../shared/descriptions';
 
 export const metricOperations: INodeProperties[] = [
 	{
@@ -43,5 +48,5 @@ export const metricFields: INodeProperties[] = [
 		resource: ['metric'],
 		operation: ['get'],
 	}),
-	...returnAllFields('metric', 'getAll'),
+	...returnAllFields('metric', 'getAll', PAGE_SIZE.metrics),
 ];

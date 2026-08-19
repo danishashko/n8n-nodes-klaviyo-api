@@ -1,6 +1,11 @@
 import type { INodeProperties } from 'n8n-workflow';
 
-import { resourceLocator, returnAllFields, rootDataProperty } from '../shared/descriptions';
+import {
+	PAGE_SIZE,
+	resourceLocator,
+	returnAllFields,
+	rootDataProperty,
+} from '../shared/descriptions';
 import { deletedConfirmation, presendProfileRelationship } from '../shared/relationships';
 
 const listLocator = (operations: string[]) =>
@@ -158,6 +163,6 @@ export const listFields: INodeProperties[] = [
 			show: { resource: ['list'], operation: ['addProfiles', 'removeProfiles'] },
 		},
 	},
-	...returnAllFields('list', 'getAll'),
-	...returnAllFields('list', 'getProfiles'),
+	...returnAllFields('list', 'getAll', PAGE_SIZE.lists),
+	...returnAllFields('list', 'getProfiles', PAGE_SIZE.nestedProfiles),
 ];
