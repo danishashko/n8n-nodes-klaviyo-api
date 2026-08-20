@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-klaviyo-api",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "n8n node for Klaviyo: profiles, lists, segments, events, metrics and campaigns, plus a trigger for Klaviyo webhooks",
 	"license": "MIT",
 	"homepage": "https://github.com/danishashko/n8n-nodes-klaviyo-api#readme",
@@ -15,7 +15,7 @@
 	],
 	"author": {
 		"name": "Daniel Shashko",
-		"email": "daniel.shashko@gmail.com"
+		"email": "daniel@organikpi.com"
 	},
 	"repository": {
 		"type": "git",
